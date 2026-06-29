@@ -1,0 +1,160 @@
+{
+  "project_type": "Expo React Native Mobile App",
+  "domain": "Logistics & Warehouse Utility",
+  "theme": "Dark",
+  "archetype": "2 (Performance Pro / Tactical Minimalism)",
+  "emotional_tone": "Rugged, fast, precise, utilitarian",
+  "design_philosophy": "High contrast for low-light warehouses, one-thumb workflow for gloved usage, instantaneous visual and haptic feedback, offline-first reliability.",
+  "color_palette": {
+    "background": "#0A0A0A",
+    "surface": "#1C1C1E",
+    "surface_elevated": "#2C2C2E",
+    "primary": "#FF9900",
+    "primary_active": "#CC7A00",
+    "success": "#34C759",
+    "error": "#FF3B30",
+    "text_primary": "#FFFFFF",
+    "text_secondary": "#A1A1AA",
+    "text_tertiary": "#636366",
+    "border": "#38383A",
+    "overlay": "rgba(0, 0, 0, 0.75)"
+  },
+  "typography": {
+    "font_families": {
+      "headings": "Oswald, Impact, or System (Condensed Black)",
+      "body": "System (Roboto/San Francisco)"
+    },
+    "scales": {
+      "h1_scan_result": { "fontSize": 40, "fontWeight": "900", "letterSpacing": -1, "lineHeight": 44 },
+      "h2_screen_title": { "fontSize": 28, "fontWeight": "800", "letterSpacing": 0.5 },
+      "h3_card_title": { "fontSize": 20, "fontWeight": "700" },
+      "body_large": { "fontSize": 18, "fontWeight": "500" },
+      "body_regular": { "fontSize": 16, "fontWeight": "400", "color": "#A1A1AA" },
+      "label_overline": { "fontSize": 12, "fontWeight": "700", "textTransform": "uppercase", "letterSpacing": 1.5, "color": "#FF9900" }
+    }
+  },
+  "spacing_and_layout": {
+    "screen_padding": 24,
+    "element_gap": 16,
+    "card_padding": 20,
+    "border_radius": {
+      "sm": 8,
+      "md": 12,
+      "lg": 20,
+      "pill": 999
+    },
+    "touch_targets": {
+      "minimum_height": 60,
+      "minimum_width": 60
+    }
+  },
+  "components": {
+    "primary_button": {
+      "backgroundColor": "#FF9900",
+      "height": 64,
+      "borderRadius": 12,
+      "justifyContent": "center",
+      "alignItems": "center",
+      "shadow": "0px 4px 12px rgba(255, 153, 0, 0.3)",
+      "typography": "h3_card_title, color: #0A0A0A"
+    },
+    "secondary_button": {
+      "backgroundColor": "#2C2C2E",
+      "height": 64,
+      "borderRadius": 12,
+      "borderWidth": 1,
+      "borderColor": "#38383A",
+      "justifyContent": "center",
+      "alignItems": "center"
+    },
+    "camera_overlay": {
+      "mask_color": "rgba(0, 0, 0, 0.8)",
+      "scan_rectangle": {
+        "width": "80%",
+        "height": 120,
+        "borderColor": "#FF9900",
+        "borderWidth": 2,
+        "corners": "4px width, 24px length, absolute positioning on corners"
+      },
+      "scan_line": {
+        "height": 2,
+        "backgroundColor": "#FF9900",
+        "shadowColor": "#FF9900",
+        "shadowRadius": 8,
+        "shadowOpacity": 0.8
+      }
+    },
+    "bottom_sheet": {
+      "backgroundColor": "#1C1C1E",
+      "borderTopLeftRadius": 24,
+      "borderTopRightRadius": 24,
+      "padding": 24,
+      "handle": {
+        "width": 40,
+        "height": 4,
+        "backgroundColor": "#38383A",
+        "borderRadius": 2,
+        "marginBottom": 16
+      }
+    },
+    "sync_badge": {
+      "flexDirection": "row",
+      "paddingHorizontal": 12,
+      "paddingVertical": 6,
+      "borderRadius": 999,
+      "backgroundColor": "#2C2C2E",
+      "offline_mode": { "backgroundColor": "#FF3B30", "textColor": "#FFFFFF" },
+      "online_mode": { "backgroundColor": "rgba(52, 199, 89, 0.2)", "textColor": "#34C759" }
+    }
+  },
+  "icons": {
+    "library": "lucide-react-native or @expo/vector-icons (Feather/MaterialCommunityIcons)",
+    "stroke_width": 2.5,
+    "size": 28
+  },
+  "motion_and_haptics": {
+    "scan_success": "Heavy haptic feedback (ImpactFeedbackStyle.Heavy) + distinct success beep. Screen flash white for 50ms.",
+    "scan_error": "Double heavy haptic feedback + error buzz. Screen flash red.",
+    "sheet_entrance": "Spring animation (damping: 20, stiffness: 90) for bottom sheet pop-up.",
+    "scan_line_loop": "Continuous vertical translation with react-native-reanimated, easing linear, repeat infinitely."
+  },
+  "screens": {
+    "MainScanScreen": {
+      "layout": "Full-screen camera underneath. Top bar: Sync status badge. Center: Focus rectangle. Bottom 30%: Black gradient overlay housing quick controls (Refresh/Flashlight toggles).",
+      "behavior": "When an Order ID is detected, pause camera processing, trigger success haptic, and present ScanResultSheet over the bottom half."
+    },
+    "ScanResultSheet": {
+      "type": "Bottom Sheet (Modal)",
+      "layout": "Header: Massive Order ID (h1_scan_result) in Primary Color. Body: Customer Name, Phone, Product, Amount Due, Order Date laid out in a dense 2-column grid. Footer: 'Scan Next Package' (Primary Button), alongside icon buttons for Copy and Share."
+    },
+    "SearchScreen": {
+      "layout": "Top: Giant search input (height 64px, large text). Center: Recent searches or search results list. Empty state: 'Type Order ID or Customer Name'.",
+      "behavior": "Real-time filtering. Keyboard dark appearance. Tapping a result opens the Result details."
+    },
+    "SettingsScreen": {
+      "layout": "Form layout. Inputs for 'Google Sheet URL', 'Scan Region Size'. Use large text inputs and big toggle switches. Include a forced 'Manual Sync' button at the bottom."
+    },
+    "HistoryScreen": {
+      "layout": "FlatList of recently scanned packages. Each row shows Order ID, Time Scanned, and Sync Status (Synced vs Pending). Row height 80px for easy tapping."
+    }
+  },
+  "testing_attributes": [
+    "data-testid='camera-view'",
+    "data-testid='sync-status-badge'",
+    "data-testid='scan-result-sheet'",
+    "data-testid='scan-next-button'",
+    "data-testid='copy-id-button'",
+    "data-testid='search-input'",
+    "data-testid='settings-sheet-url-input'",
+    "data-testid='history-list-item'"
+  ],
+  "instructions_to_main_agent": [
+    "This is an Expo React Native app. Do NOT use web-only libraries like Tailwind CSS or Shadcn/ui unless you are using NativeWind. Prefer standard React Native StyleSheet if NativeWind is not pre-configured.",
+    "For the camera and OCR, utilize 'expo-camera'. Use its barcode scanning features or frame processing capabilities.",
+    "Implement the 'One-Thumb Workflow': Keep all primary interactive elements (buttons, inputs) large (minimum 60px height) and located in the bottom half of the screen.",
+    "Ensure 'expo-haptics' is integrated for tactile feedback on scan success.",
+    "For the Result screen, use a standard React Native Modal configured as a Bottom Sheet, or '@gorhom/bottom-sheet' if you install it.",
+    "Use standard dark mode colors as explicitly defined in the color_palette. Avoid pure white backgrounds to prevent warehouse glare.",
+    "Test IDs in React Native use the 'testID' prop, not 'data-testid'. Please map 'data-testid' conceptually to 'testID' in all RN components."
+  ]
+}
