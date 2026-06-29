@@ -68,8 +68,8 @@ export const api = {
   listOrders: () => request<Order[]>("/orders"),
   search: (q: string) => request<Order[]>(`/orders/search?q=${encodeURIComponent(q)}`),
   lookup: (order_id: string) => request<OcrResult>(`/orders/lookup?order_id=${encodeURIComponent(order_id)}`),
-  ocr: (image_base64: string) =>
-    request<OcrResult>("/ocr", { method: "POST", body: JSON.stringify({ image_base64 }) }),
+  // NOTE: /api/ocr exists on the backend as an optional debug-only fallback.
+  // The production scanner uses Google ML Kit on-device — NO network OCR.
 };
 
 // ---------- Local cache (offline-first) ----------

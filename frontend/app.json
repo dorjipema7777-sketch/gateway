@@ -30,12 +30,6 @@
     "plugins": [
       "expo-router",
       [
-        "expo-camera",
-        {
-          "cameraPermission": "Scan Amazon Order IDs on packages"
-        }
-      ],
-      [
         "expo-splash-screen",
         {
           "image": "./assets/images/splash-image.png",
