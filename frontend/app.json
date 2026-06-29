@@ -10,6 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.emergent.packagescanner",
       "infoPlist": {
         "NSCameraUsageDescription": "Scan Amazon Order IDs on packages"
       }
@@ -20,7 +21,11 @@
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
-      "permissions": ["android.permission.CAMERA", "android.permission.VIBRATE"]
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.VIBRATE"
+      ],
+      "package": "com.emergent.packagescanner"
     },
     "web": {
       "bundler": "metro",

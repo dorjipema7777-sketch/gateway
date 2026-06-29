@@ -1,0 +1,24 @@
+diff --git a/node_modules/react-native-vision-camera-ocr-plus/lib/commonjs/Camera.js b/node_modules/react-native-vision-camera-ocr-plus/lib/commonjs/Camera.js
+index ae52be5..2635f9a 100644
+--- a/node_modules/react-native-vision-camera-ocr-plus/lib/commonjs/Camera.js
++++ b/node_modules/react-native-vision-camera-ocr-plus/lib/commonjs/Camera.js
+@@ -140,6 +140,4 @@ function useTextRecognition(options) {
+ function useTranslate(options) {
+   return (0, _react.useMemo)(() => (0, _translateText.createTranslatorPlugin)(options), [options]);
+ }
+-//# sourceMappingURL=Camera.js.mapptions), [options]);
+-}
+ //# sourceMappingURL=Camera.js.map
+\ No newline at end of file
+diff --git a/node_modules/react-native-vision-camera-ocr-plus/lib/module/Camera.js b/node_modules/react-native-vision-camera-ocr-plus/lib/module/Camera.js
+index 9932669..774bf39 100644
+--- a/node_modules/react-native-vision-camera-ocr-plus/lib/module/Camera.js
++++ b/node_modules/react-native-vision-camera-ocr-plus/lib/module/Camera.js
+@@ -133,6 +133,4 @@ export function useTextRecognition(options) {
+ export function useTranslate(options) {
+   return useMemo(() => createTranslatorPlugin(options), [options]);
+ }
+-//# sourceMappingURL=Camera.js.mapPlugin(options), [options]);
+-}
+ //# sourceMappingURL=Camera.js.map
+\ No newline at end of file
